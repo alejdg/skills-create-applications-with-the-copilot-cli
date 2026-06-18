@@ -169,7 +169,7 @@ describe('calculate()', () => {
 });
 
 // ─── Modulo ──────────────────────────────────────────────────────────────────
-describe('modulo()', () => {
+describe('modulo', () => {
   test('returns modulo remainder (10 % 3 = 1)', () => {
     expect(modulo(10, 3)).toBe(1);
   });
@@ -193,7 +193,7 @@ describe('modulo()', () => {
 });
 
 // ─── Exponentiation (Power) ──────────────────────────────────────────────────
-describe('exponent()', () => {
+describe('power', () => {
   test('raises a number to a positive power (2 ** 8 = 256)', () => {
     expect(exponent(2, 8)).toBe(256);
   });
@@ -220,7 +220,7 @@ describe('exponent()', () => {
 });
 
 // ─── Square Root ─────────────────────────────────────────────────────────────
-describe('sqrt()', () => {
+describe('squareroot', () => {
   test('returns the square root of a perfect square (sqrt 16 = 4)', () => {
     expect(sqrt(16)).toBe(4);
   });

@@ -12,6 +12,8 @@
 
 const readline = require('readline');
 
+module.exports = { add, subtract, multiply, divide, calculate };
+
 /** Returns the sum of a and b */
 function add(a, b) {
   return a + b;
@@ -60,31 +62,34 @@ function calculate(expression) {
   }
 }
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+// Only start the interactive CLI when run directly (not when imported by tests)
+if (require.main === module) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
 
-console.log('Node.js CLI Calculator');
-console.log('Supported operations: addition (+), subtraction (-), multiplication (*), division (/)');
-console.log('Usage: <number> <operator> <number>  (e.g. 5 + 3)');
-console.log('Type "exit" or press Ctrl+C to quit.\n');
+  console.log('Node.js CLI Calculator');
+  console.log('Supported operations: addition (+), subtraction (-), multiplication (*), division (/)');
+  console.log('Usage: <number> <operator> <number>  (e.g. 5 + 3)');
+  console.log('Type "exit" or press Ctrl+C to quit.\n');
 
-rl.on('line', (line) => {
-  const input = line.trim();
-  if (input.toLowerCase() === 'exit') {
-    rl.close();
-    return;
-  }
-  try {
-    const result = calculate(input);
-    console.log(`= ${result}`);
-  } catch (err) {
-    console.error(`Error: ${err.message}`);
-  }
-});
+  rl.on('line', (line) => {
+    const input = line.trim();
+    if (input.toLowerCase() === 'exit') {
+      rl.close();
+      return;
+    }
+    try {
+      const result = calculate(input);
+      console.log(`= ${result}`);
+    } catch (err) {
+      console.error(`Error: ${err.message}`);
+    }
+  });
 
-rl.on('close', () => {
-  console.log('Goodbye!');
-  process.exit(0);
-});
+  rl.on('close', () => {
+    console.log('Goodbye!');
+    process.exit(0);
+  });
+}
